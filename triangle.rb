@@ -15,6 +15,14 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
+  arr = [a, b, c]
+  if arr.uniq.length == 1
+    :equilateral
+  elsif arr.uniq.length == 2
+    :isosceles
+  else
+    :scalene
+  end
 end
 
 # Error class used in part 2.  No need to change this code.
