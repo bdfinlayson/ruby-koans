@@ -15,7 +15,17 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
+
   arr = [a, b, c]
+  if arr.uniq.length == 1 && arr[0] == 0
+    raise TriangleError
+  end
+  if arr.join('')[/-/] == "-"
+    raise TriangleError
+  end
+  if a + b <= c || b + c <= a || a + c <= b
+    raise TriangleError
+  end
   if arr.uniq.length == 1
     :equilateral
   elsif arr.uniq.length == 2
