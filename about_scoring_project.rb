@@ -31,6 +31,28 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 def score(dice)
   # You need to write this method
+
+  diceArr = [1,2,3,4,5,6]
+  result = []
+
+  $i = 0
+  $diceArrLength = diceArr.length
+
+  while $i < $diceArrLength do
+    result << dice.count(diceArr[$i])
+    $i += 1
+  end
+
+  #check for empty array
+  if dice.empty?
+    return 0
+  #check for single 1 or 5
+  elsif dice[0] === 1 && dice.length == 1
+    return 100
+  elsif dice[0] === 5 && dice.length == 1
+    return 50
+  end
+
 end
 
 class AboutScoringProject < Neo::Koan
