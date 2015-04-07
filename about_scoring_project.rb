@@ -32,25 +32,25 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 def score(dice)
   # You need to write this method
 
-  diceArr = [1,2,3,4,5,6]
-  result = []
-
-  $i = 0
-  $diceArrLength = diceArr.length
-
-  while $i < $diceArrLength do
-    result << dice.count(diceArr[$i])
-    $i += 1
-  end
-
   #check for empty array
   if dice.empty?
     return 0
-  #check for single 1 or 5
-  elsif dice[0] === 1 && dice.length == 1
-    return 100
-  elsif dice[0] === 5 && dice.length == 1
-    return 50
+  elsif dice
+    #set the score variable to 0
+    score = 0
+    #declare the array of possible numbers besides 1
+    nums = [2,3,4,5,6]
+    #check for single 1s
+    score += (dice.count(1) % 3) * 100
+    #check for single 5s
+    score += (dice.count(5) % 3) * 50
+    #check for tripple 1s
+    score += 1000 if (dice.count(1) / 3) == 1
+    #check for tripples of 2-6
+    nums.each do |num|
+      score += num * 100 if (dice.count(num) / 3) == 1
+    end
+    return score
   end
 
 end
