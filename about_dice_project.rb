@@ -2,9 +2,19 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 # Implement a DiceSet Class here:
 #
-# class DiceSet
-#   code ...
-# end
+class DiceSet
+
+  def roll(x)
+  diceArr = [1,2,3,4,5,6]
+  throw = diceArr.repeated_permutation(x).to_a
+  @values = throw[rand(throw.length)] #the instance variable allows you to pass data between methods during a single instance
+  end
+
+  def values
+    return @values
+  end
+
+end
 
 class AboutDiceProject < Neo::Koan
   def test_can_create_a_dice_set
